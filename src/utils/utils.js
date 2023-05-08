@@ -19,7 +19,8 @@ export function filterFlights(flights) {
     return flights?.filter(flight => {
         if (
             flight.estArrivalAirport === null ||
-            flight.estDepartureAirport === null
+            flight.estDepartureAirport === null ||
+            flight.callsign === null
         ) {
             return false;
         }
