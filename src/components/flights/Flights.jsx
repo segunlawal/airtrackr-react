@@ -52,7 +52,9 @@ const Flights = () => {
                     key={`${flight.icao24}-${index}`}
                     className="bg-white border-b-4 border-double p-5 grid grid-cols-4 gap-6 md:gap-16 lg:gap-36 xl:gap-56 rounded-lg"
                 >
-                    <p className="my-auto text-custom-blue">{flight.icao24}</p>
+                    <p className="my-auto text-custom-blue">
+                        {flight.callsign}
+                    </p>
                     <div className="flex flex-col items-center">
                         <p className="sm:text-2xl text-xl text-custom-blue">
                             {flight.estDepartureAirport}
