@@ -38,7 +38,7 @@ export function sortFlights(flights) {
     ];
 
     // Create a new array with airport information
-    const airportArray = uniqueAirports.map(airport => {
+    const airportArray = uniqueAirports.reduce((arr, airport) => {
         const arrivingFlights = flights.filter(
             obj => obj.estArrivalAirport === airport
         );
@@ -59,13 +59,27 @@ export function sortFlights(flights) {
         const arriving = arrivingFlights.length;
         const departing = departingFlights.length;
 
-        return {
-            airport,
-            arriving,
-            departing,
-            lastSeen
-        };
-    });
+        if (airport !== null) {
+            arr.push({
+                airport,
+                arriving,
+                departing,
+                lastSeen
+            });
+        }
+
+        return arr;
+    }, []);
 
     return airportArray;
+}
+
+export function isSameDay(displayInfo) {
+    const date1 = new Date(displayInfo[0] * 1000);
+    const date2 = new Date(displayInfo[1] * 1000);
+    return (
+        date1.getFullYear() === date2.getFullYear() &&
+        date1.getMonth() === date2.getMonth() &&
+        date1.getDate() === date2.getDate()
+    );
 }

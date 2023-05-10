@@ -92,12 +92,10 @@ const Flights = () => {
             )}
 
             <div className="bg-white sticky top-0 text-sm text-custom-blue font-bold px-5 py-2 border-b-4 grid grid-cols-4 gap-6 md:gap-16 lg:gap-36 xl:gap-56">
-                <p>FLIGHT</p>
-                <p className="sm:pl-7">DEPARTURE</p>
-                <div>
-                    <p className="sm:pl-7 pl-2">ARRIVAL</p>
-                </div>
-                <p>DEPARTURE DATE</p>
+                <p className="">FLIGHT</p>
+                <p className="text-center">DEPARTURE</p>
+                <p className="text-center">ARRIVAL</p>
+                <p className="">DEPARTURE DATE</p>
             </div>
             {error && (
                 <p>
