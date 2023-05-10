@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { unixToDate, unixToGMT, filterFlights } from "../../utils/utils";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useQuery } from "react-query";
 import SearchTimeRange from "../flights/SearchTimeRange/SearchTimeRange";
 import ReactPaginate from "react-paginate";
@@ -80,6 +81,7 @@ const Flights = () => {
 
     return (
         <div className="sm:pl-60 pl-2 py-5 pb-24 text-[#1e1e1e]">
+            <ToastContainer />
             <Header />
             <SearchTimeRange
                 setFlights={setFlights}
@@ -97,6 +99,12 @@ const Flights = () => {
                 </div>
                 <p>DEPARTURE DATE</p>
             </div>
+            {error && (
+                <p>
+                    Failed to load. Please try refreshing the page or check your
+                    internet connection.
+                </p>
+            )}
 
             {isLoading ? (
                 <p>Loading...</p>

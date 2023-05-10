@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Modal from "react-modal";
 import moment from "moment";
 import SearchTimeRangeModal from "./SearchTimeRangeModal";
+import { toast } from "react-toastify";
 
 const SearchTimeRange = props => {
     const { setFlights, setDisplayInfo } = props;
@@ -34,6 +35,7 @@ const SearchTimeRange = props => {
         setFlights(data);
         setDisplayInfo([begin, end]);
         setModalIsOpen(false);
+        toast.success("Flights search successful");
         setButtonDisabled(false);
     };
 

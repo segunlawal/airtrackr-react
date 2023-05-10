@@ -27,3 +27,45 @@ export function filterFlights(flights) {
         return true;
     });
 }
+
+export function sortFlights(flights) {
+    const uniqueAirports = [
+        ...new Set(
+            flights
+                .map(obj => obj.estArrivalAirport)
+                .concat(flights.map(obj => obj.estDepartureAirport))
+        )
+    ];
+
+    // Create a new array with airport information
+    const airportArray = uniqueAirports.map(airport => {
+        const arrivingFlights = flights.filter(
+            obj => obj.estArrivalAirport === airport
+        );
+        const departingFlights = flights.filter(
+            obj => obj.estDepartureAirport === airport
+        );
+
+        const lastSeenArriving = Math.max(
+            ...arrivingFlights.map(obj => obj.lastSeen),
+            0
+        );
+        const lastSeenDeparting = Math.max(
+            ...departingFlights.map(obj => obj.lastSeen),
+            0
+        );
+        const lastSeen = Math.max(lastSeenArriving, lastSeenDeparting);
+
+        const arriving = arrivingFlights.length;
+        const departing = departingFlights.length;
+
+        return {
+            airport,
+            arriving,
+            departing,
+            lastSeen
+        };
+    });
+
+    return airportArray;
+}
