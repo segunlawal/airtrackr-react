@@ -15,10 +15,10 @@ const FlightsInfo = props => {
 
     return (
         <div className="flex sm:gap-5">
-            <p className="font-semibold">
+            <p className="font-semibold sm:text-md text-sm">
                 RESULT ({filterFlights(flights)?.length})
             </p>
-            <div className="flex flex-col my-auto">
+            <div className="flex flex-col my-auto ">
                 {isSameDay(displayInfo) ? (
                     <small>
                         These are flights arriving between{" "}

@@ -77,7 +77,7 @@ const SearchTimeRange = props => {
                     />
                 </Modal>
             </div>
-            <div className="my-auto">
+            <div className="my-auto sm:p-0 pb-4">
                 <input
                     className="focus:border-2 border-[1px] p-2 rounded-lg bg-transparent border-[#2b2b39] focus:outline-none"
                     placeholder="Search for a flight"

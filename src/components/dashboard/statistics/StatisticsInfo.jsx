@@ -8,7 +8,7 @@ const StatisticsInfo = props => {
     const date1 = unixToDate(rangeInfo[0]);
     const date2 = unixToDate(rangeInfo[1]);
     return (
-        <div className="py-2">
+        <div className="py-2 text-custom-black font-normal">
             {isSameDay(rangeInfo) ? (
                 <small>
                     This is airport information about flights between{" "}

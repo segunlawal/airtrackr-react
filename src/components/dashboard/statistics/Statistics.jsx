@@ -70,7 +70,7 @@ const Statistics = () => {
     return (
         <div className="sm:pl-60 pl-5 py-3 flex flex-col text-left font-semibold text-custom-blue">
             <ToastContainer />
-            <p className="text-2xl">STATISTICS</p>
+            <p className="text-2xl text-[#c99c33]">STATISTICS</p>
             <StatisticsInfo rangeInfo={rangeInfo} />
 
             <div className="bg-white sticky top-0  border-b-4 border-double p-5 grid grid-cols-4 gap-6 md:gap-16 lg:gap-36 xl:gap-56 rounded-lg">
