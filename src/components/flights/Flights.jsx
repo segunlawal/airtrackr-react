@@ -7,6 +7,7 @@ import SearchTimeRange from "../flights/SearchTimeRange/SearchTimeRange";
 import ReactPaginate from "react-paginate";
 import Header from "../flights/Header";
 import FlightsInfo from "../flights/FlightsInfo";
+import LoadingSpinner from "../spinner/LoadingSpinner";
 
 const Flights = () => {
     const [flights, setFlights] = useState();
@@ -113,7 +114,7 @@ const Flights = () => {
             )}
 
             {isLoading ? (
-                <p>Loading...</p>
+                <LoadingSpinner />
             ) : (
                 <div className="">
                     {displayFlights}

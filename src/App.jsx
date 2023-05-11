@@ -4,7 +4,7 @@ import Dashboard from "./pages/Dashboard";
 import { ActiveTabProvider } from "./hooks/TabContext";
 import { ToastContainer } from "react-toastify";
 import LogIn from "./pages/LogIn";
-import ErrorPage from "./components/ErrorPage";
+import ErrorPage from "./pages/ErrorPage";
 
 function App() {
     return (

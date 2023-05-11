@@ -3,6 +3,7 @@ import Modal from "react-modal";
 import moment from "moment";
 import SearchTimeRangeModal from "./SearchTimeRangeModal";
 import { toast } from "react-toastify";
+import LoadingSpinner from "../../spinner/LoadingSpinner";
 
 const SearchTimeRange = props => {
     const { setFlights, setDisplayInfo, search, setSearch } = props;
@@ -16,6 +17,7 @@ const SearchTimeRange = props => {
     const [buttonDisabled, setButtonDisabled] = useState(false);
     const [startTime, setStartTime] = useState();
     const [endTime, setEndTime] = useState();
+    const [loading, setLoading] = useState();
 
     useEffect(() => {
         setStartTime(currentDate);
@@ -25,6 +27,7 @@ const SearchTimeRange = props => {
     // Get flights for a time range
     const handleflightSearch = async () => {
         setButtonDisabled(true);
+        setLoading(true);
         const begin = moment(startTime, "YYYY-MM-DD HH:mm").unix();
         const end = moment(endTime, "YYYY-MM-DD HH:mm").unix();
         const data = await (
@@ -35,6 +38,7 @@ const SearchTimeRange = props => {
         setFlights(data);
         setDisplayInfo([begin, end]);
         setModalIsOpen(false);
+        setLoading(false);
         toast.success("Flights search successful");
         setButtonDisabled(false);
     };
@@ -67,6 +71,7 @@ const SearchTimeRange = props => {
                         setModalIsOpen(false);
                     }}
                 >
+                    {loading && <LoadingSpinner />}
                     <SearchTimeRangeModal
                         startTime={startTime}
                         endTime={endTime}
