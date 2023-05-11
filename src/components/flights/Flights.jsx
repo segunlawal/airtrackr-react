@@ -14,6 +14,7 @@ const Flights = () => {
     const begin = Math.floor(currentDate - 7200);
     const end = Math.floor(currentDate);
     const [displayInfo, setDisplayInfo] = useState([begin, end]);
+    const [search, setSearch] = useState("");
 
     const getFlights = async () => {
         const res = await fetch(
@@ -46,6 +47,11 @@ const Flights = () => {
     const handlePageChange = ({ selected }) => setPageNumber(selected);
 
     const displayFlights = filterFlights(flights)
+        ?.filter(item => {
+            return search.toLowerCase() === ""
+                ? item
+                : item.callsign.toLowerCase().includes(search);
+        })
         ?.slice(pagesVisited, pagesVisited + flightsPerPage)
         ?.map((flight, index) => {
             return (
@@ -86,6 +92,8 @@ const Flights = () => {
             <SearchTimeRange
                 setFlights={setFlights}
                 setDisplayInfo={setDisplayInfo}
+                search={search}
+                setSearch={setSearch}
             />
             {!isLoading && (
                 <FlightsInfo flights={flights} displayInfo={displayInfo} />

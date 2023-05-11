@@ -2,14 +2,9 @@ import { useState, useEffect } from "react";
 import "react-toastify/dist/ReactToastify.css";
 import { useQuery } from "react-query";
 import { toast, ToastContainer } from "react-toastify";
-import {
-    filterFlights,
-    isSameDay,
-    sortFlights,
-    unixToDate,
-    unixToGMT
-} from "../../utils/utils";
+import { filterFlights, sortFlights, unixToGMT } from "../../../utils/utils";
 import ReactPaginate from "react-paginate";
+import StatisticsInfo from "./StatisticsInfo";
 
 const Statistics = () => {
     const [airportInfo, setairportInfo] = useState([]);
@@ -53,11 +48,6 @@ const Statistics = () => {
         : 0;
     const handlePageChange = ({ selected }) => setPageNumber(selected);
 
-    const time1 = unixToGMT(rangeInfo[0]);
-    const time2 = unixToGMT(rangeInfo[1]);
-    const date1 = unixToDate(rangeInfo[0]);
-    const date2 = unixToDate(rangeInfo[1]);
-
     const filteredFlights = airportInfo
         ?.slice(pagesVisited, pagesVisited + flightsPerPage)
         .map((airport, index) => {
@@ -81,45 +71,14 @@ const Statistics = () => {
         <div className="sm:pl-60 pl-5 py-3 flex flex-col text-left font-semibold text-custom-blue">
             <ToastContainer />
             <p className="text-2xl">STATISTICS</p>
-            <div className="py-2">
-                {isSameDay(rangeInfo) ? (
-                    <small>
-                        This is airport information about flights between{" "}
-                        <span className="text-custom-blue font-semibold">
-                            {time1}{" "}
-                        </span>{" "}
-                        and{" "}
-                        <span className="text-custom-blue font-semibold">
-                            {time2}{" "}
-                        </span>
-                        on{" "}
-                        <span className="text-custom-blue font-semibold">
-                            {date1}
-                        </span>
-                    </small>
-                ) : (
-                    <small>
-                        This is airport information about flights between{" "}
-                        <span className="text-custom-blue font-semibold">
-                            {time1} {date1}
-                        </span>{" "}
-                        and{" "}
-                        <span className="text-custom-blue font-semibold">
-                            {time2} {date2}
-                        </span>
-                    </small>
-                )}
-            </div>
+            <StatisticsInfo rangeInfo={rangeInfo} />
 
             <div className="bg-white sticky top-0  border-b-4 border-double p-5 grid grid-cols-4 gap-6 md:gap-16 lg:gap-36 xl:gap-56 rounded-lg">
                 <div>
                     <p className="font-bold">AIRPORT</p>
                     <p className="">({airportInfo?.length})</p>
                 </div>
-                <div>
-                    <p className="font-bold text-center">TIME</p>
-                    <small className="text-xs">(last flight seen)</small>
-                </div>
+                <p className="font-bold text-center">TIME</p>
                 <p className="font-bold text-center">ARRIVING</p>
                 <p className="font-bold text-center">DEPARTING</p>
             </div>

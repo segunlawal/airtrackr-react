@@ -5,7 +5,7 @@ import SearchTimeRangeModal from "./SearchTimeRangeModal";
 import { toast } from "react-toastify";
 
 const SearchTimeRange = props => {
-    const { setFlights, setDisplayInfo } = props;
+    const { setFlights, setDisplayInfo, search, setSearch } = props;
 
     // Get today's date at midnight
     const currentDate = moment()
@@ -40,41 +40,51 @@ const SearchTimeRange = props => {
     };
 
     return (
-        <div>
-            <p className="py-5">
-                Want to search through a time range?{" "}
-                <span
-                    className="bg-light text-custom-blue font-semibold cursor-pointer"
-                    onClick={() => setModalIsOpen(true)}
+        <div className="md:flex md:justify-between">
+            <div>
+                <p className="py-5">
+                    Want to search through a time range?{" "}
+                    <span
+                        className="bg-light text-custom-blue font-semibold cursor-pointer"
+                        onClick={() => setModalIsOpen(true)}
+                    >
+                        Click here
+                    </span>
+                </p>
+                <Modal
+                    style={{
+                        overlay: {
+                            position: "fixed",
+                            background: "rgba(24, 49, 64, 0.63)",
+                            backdropFilter: 'blur("91px")',
+                            zIndex: 1
+                        }
+                    }}
+                    isOpen={modalIsOpen}
+                    className="bg-white outline-none text-custom-black mt-[10%] py-10 sm:w-[50%] w-[90%] mx-auto rounded-sm"
+                    appElement={document.getElementById("root") || undefined}
+                    onRequestClose={() => {
+                        setModalIsOpen(false);
+                    }}
                 >
-                    Click here
-                </span>
-            </p>
-            <Modal
-                style={{
-                    overlay: {
-                        position: "fixed",
-                        background: "rgba(24, 49, 64, 0.63)",
-                        backdropFilter: 'blur("91px")',
-                        zIndex: 1
-                    }
-                }}
-                isOpen={modalIsOpen}
-                className="bg-white outline-none text-custom-black mt-[10%] py-10 sm:w-[50%] w-[90%] mx-auto rounded-sm"
-                appElement={document.getElementById("root") || undefined}
-                onRequestClose={() => {
-                    setModalIsOpen(false);
-                }}
-            >
-                <SearchTimeRangeModal
-                    startTime={startTime}
-                    endTime={endTime}
-                    setStartTime={setStartTime}
-                    setEndTime={setEndTime}
-                    buttonDisabled={buttonDisabled}
-                    handleflightSearch={handleflightSearch}
+                    <SearchTimeRangeModal
+                        startTime={startTime}
+                        endTime={endTime}
+                        setStartTime={setStartTime}
+                        setEndTime={setEndTime}
+                        buttonDisabled={buttonDisabled}
+                        handleflightSearch={handleflightSearch}
+                    />
+                </Modal>
+            </div>
+            <div className="my-auto">
+                <input
+                    className="focus:border-2 border-[1px] p-2 rounded-lg bg-transparent border-[#2b2b39] focus:outline-none"
+                    placeholder="Search for a flight"
+                    value={search}
+                    onChange={e => setSearch(e.target.value.toLowerCase())}
                 />
-            </Modal>
+            </div>
         </div>
     );
 };
