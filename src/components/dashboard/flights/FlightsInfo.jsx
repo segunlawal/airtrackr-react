@@ -3,10 +3,10 @@ import {
     unixToDate,
     filterFlights,
     isSameDay
-} from "../../utils/utils";
+} from "../../../utils/utils";
 
 const FlightsInfo = props => {
-    const { flights, displayInfo } = props;
+    const { flights, displayInfo, search } = props;
 
     const time1 = unixToGMT(displayInfo[0]);
     const time2 = unixToGMT(displayInfo[1]);
@@ -16,7 +16,15 @@ const FlightsInfo = props => {
     return (
         <div className="flex sm:gap-5">
             <p className="font-semibold sm:text-md text-sm">
-                RESULT ({filterFlights(flights)?.length})
+                RESULT (
+                {
+                    filterFlights(flights)?.filter(item => {
+                        return search.toLowerCase() === ""
+                            ? item
+                            : item.callsign.toLowerCase().includes(search);
+                    })?.length
+                }
+                )
             </p>
             <div className="flex flex-col my-auto ">
                 {isSameDay(displayInfo) ? (

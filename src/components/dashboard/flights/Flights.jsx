@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { unixToDate, unixToGMT, filterFlights } from "../../utils/utils";
+import { unixToDate, unixToGMT, filterFlights } from "../../../utils/utils";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useQuery } from "react-query";
@@ -7,7 +7,7 @@ import SearchTimeRange from "../flights/SearchTimeRange/SearchTimeRange";
 import ReactPaginate from "react-paginate";
 import Header from "../flights/Header";
 import FlightsInfo from "../flights/FlightsInfo";
-import LoadingSpinner from "../spinner/LoadingSpinner";
+import LoadingSpinner from "../../spinner/LoadingSpinner";
 
 const Flights = () => {
     const [flights, setFlights] = useState();
@@ -97,7 +97,11 @@ const Flights = () => {
                 setSearch={setSearch}
             />
             {!isLoading && (
-                <FlightsInfo flights={flights} displayInfo={displayInfo} />
+                <FlightsInfo
+                    flights={flights}
+                    displayInfo={displayInfo}
+                    search={search}
+                />
             )}
 
             <div className="bg-white sticky top-0 text-sm text-custom-blue font-bold px-5 py-2 border-b-4 grid grid-cols-4 gap-6 md:gap-16 lg:gap-36 xl:gap-56">

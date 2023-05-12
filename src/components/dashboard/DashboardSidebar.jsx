@@ -11,6 +11,7 @@ const links = [
     { id: 2, path: "Statistics", icon: GoGraph },
     { id: 3, path: "Settings", icon: FiSettings }
 ];
+
 // links For mobile
 const mobileOrder = [1, 0, 2];
 const mobileLinks = mobileOrder.map(i => links[i]);

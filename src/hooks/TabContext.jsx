@@ -1,9 +1,9 @@
-import React, { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
 const TabContext = createContext();
 
-// create active tab provider
 export const ActiveTabProvider = ({ children }) => {
+    // create active tab provider
     const [activeTab, setActiveTab] = useState("Flights");
     return (
         <TabContext.Provider value={{ activeTab, setActiveTab }}>

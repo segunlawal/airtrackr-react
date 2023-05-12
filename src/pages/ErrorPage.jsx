@@ -4,7 +4,7 @@ import { BsFillAirplaneEnginesFill } from "react-icons/bs";
 const ErrorPage = () => {
     const navigate = useNavigate();
     return (
-        <div className="text-custom-black lg_background">
+        <div className="lg_background text-custom-black">
             <div className="flex pt-10 justify-center gap-1 text-[#c99c33]">
                 <BsFillAirplaneEnginesFill className="text-3xl " />
                 <p className="font-semibold text-3xl">OpenSKY</p>

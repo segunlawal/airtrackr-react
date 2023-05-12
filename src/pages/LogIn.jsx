@@ -23,11 +23,12 @@ const LogIn = () => {
     const token = localStorage.getItem("openSkyToken");
     if (token) return <Navigate to="/dashboard" />;
 
-    // Password visibility
     const togglePassword = () =>
+        // Password visibility
         setShowPassword(prevState =>
             prevState === "password" ? "text" : "password"
         );
+
     const eyeIcon =
         showPassword === "password" ? (
             <FaEye size="1.2rem" />
@@ -35,8 +36,8 @@ const LogIn = () => {
             <FaEyeSlash size="1.2rem" />
         );
 
-    // Handle log in
     const signIn = values => {
+        // Handle log in
         const { loginEmail, loginPassword } = values;
         setIsButtonDisabled(true);
         if (loginEmail === "admin@gmail.com" && loginPassword === "admin") {

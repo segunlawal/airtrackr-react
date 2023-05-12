@@ -10,7 +10,6 @@ function App() {
     return (
         <ActiveTabProvider>
             <ToastContainer />
-
             <Routes>
                 <Route path="/" element={<LogIn />} />
                 <Route path="/dashboard" element={<DashboardLayout />}>

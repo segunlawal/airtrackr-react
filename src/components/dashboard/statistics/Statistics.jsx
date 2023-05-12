@@ -50,12 +50,13 @@ const Statistics = () => {
     const handlePageChange = ({ selected }) => setPageNumber(selected);
 
     const filteredFlights = airportInfo
+        // search feature
         ?.filter(item => {
             return airportSearch.toLowerCase() === ""
                 ? item
                 : item.airport.toLowerCase().includes(airportSearch);
         })
-        ?.slice(pagesVisited, pagesVisited + flightsPerPage)
+        ?.slice(pagesVisited, pagesVisited + flightsPerPage) // paginate
         .map((airport, index) => {
             return (
                 <div
@@ -91,7 +92,19 @@ const Statistics = () => {
             <div className="bg-white sticky top-0  border-b-4 border-double p-5 grid grid-cols-4 gap-6 md:gap-16 lg:gap-36 xl:gap-56 rounded-lg">
                 <div>
                     <p className="font-bold">AIRPORT</p>
-                    <p className="">({airportInfo?.length})</p>
+                    <p className="">
+                        (
+                        {
+                            airportInfo?.filter(item => {
+                                return airportSearch.toLowerCase() === ""
+                                    ? item
+                                    : item.airport
+                                          .toLowerCase()
+                                          .includes(airportSearch);
+                            })?.length
+                        }
+                        )
+                    </p>
                 </div>
                 <p className="font-bold text-center">TIME</p>
                 <p className="font-bold text-center">ARRIVING</p>

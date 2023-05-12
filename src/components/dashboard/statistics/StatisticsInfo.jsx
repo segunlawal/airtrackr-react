@@ -1,4 +1,3 @@
-import React from "react";
 import { isSameDay, unixToDate, unixToGMT } from "../../../utils/utils";
 
 const StatisticsInfo = props => {

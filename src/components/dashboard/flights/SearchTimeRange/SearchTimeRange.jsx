@@ -3,7 +3,7 @@ import Modal from "react-modal";
 import moment from "moment";
 import SearchTimeRangeModal from "./SearchTimeRangeModal";
 import { toast } from "react-toastify";
-import LoadingSpinner from "../../spinner/LoadingSpinner";
+import LoadingSpinner from "../../../spinner/LoadingSpinner";
 
 const SearchTimeRange = props => {
     const { setFlights, setDisplayInfo, search, setSearch } = props;
@@ -24,8 +24,8 @@ const SearchTimeRange = props => {
         setEndTime(currentDate);
     }, [currentDate]);
 
-    // Get flights for a time range
     const handleflightSearch = async () => {
+        // Get flights for a time range
         setButtonDisabled(true);
         setLoading(true);
         const begin = moment(startTime, "YYYY-MM-DD HH:mm").unix();

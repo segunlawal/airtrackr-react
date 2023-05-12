@@ -1,5 +1,5 @@
 import { useTabContext } from "../hooks/TabContext";
-import Flights from "../components/flights/Flights";
+import Flights from "../components/dashboard/flights/Flights";
 import Statistics from "../components/dashboard/statistics/Statistics";
 import Settings from "../components/dashboard/Settings";
 import { Navigate } from "react-router-dom";

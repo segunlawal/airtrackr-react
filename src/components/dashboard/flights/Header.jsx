@@ -1,4 +1,4 @@
-import Logout from "../Logout";
+import Logout from "../../Logout";
 
 const Header = () => {
     const token = localStorage.getItem("openSkyToken");

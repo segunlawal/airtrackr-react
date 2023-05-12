@@ -15,7 +15,9 @@ export function unixToDate(unixTime) {
     });
     return dateStr;
 }
+
 export function filterFlights(flights) {
+    // Remove null instances
     return flights?.filter(flight => {
         if (
             flight.estArrivalAirport === null ||
@@ -29,6 +31,7 @@ export function filterFlights(flights) {
 }
 
 export function sortFlights(flights) {
+    // Get new array from flights array
     const uniqueAirports = [
         ...new Set(
             flights
@@ -75,6 +78,7 @@ export function sortFlights(flights) {
 }
 
 export function isSameDay(displayInfo) {
+    // Check if two unix times are on the same day
     const date1 = new Date(displayInfo[0] * 1000);
     const date2 = new Date(displayInfo[1] * 1000);
     return (
