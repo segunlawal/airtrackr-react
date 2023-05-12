@@ -30,7 +30,10 @@ const SearchTimeRangeModal = props => {
 
                     <div className="flex flex-col gap-3">
                         <div className="flex flex-col items-start">
-                            <label htmlFor="lowerlimit">From (DD/MM/YYY)</label>
+                            <label htmlFor="lowerlimit">
+                                From
+                                <span className="text-xs">(DD/MM/YYY)</span>
+                            </label>
                             <Field
                                 name="lowerlimit"
                                 type="datetime-local"
@@ -42,7 +45,10 @@ const SearchTimeRangeModal = props => {
                             />
                         </div>
                         <div className="flex flex-col items-start">
-                            <label htmlFor="lowerlimit">To (DD/MM/YYY)</label>
+                            <label htmlFor="lowerlimit">
+                                To
+                                <span className="text-xs">(DD/MM/YYY)</span>
+                            </label>
                             <Field
                                 name="upperlimit"
                                 type="datetime-local"
