@@ -30,7 +30,7 @@ const DashboardSidebar = () => {
             <div className="hidden sm:flex fixed bg-custom-blue min-h-screen w-48 flex-col px-10">
                 <div className="flex items-center gap-2 pt-10 pb-20 text-[#c99c33]">
                     <BsFillAirplaneEnginesFill className="text-3xl " />
-                    <p className="font-bold">OpenSKY</p>
+                    <p className="font-bold">AirTrackr</p>
                 </div>
                 {links.map(({ id, path, icon }) => {
                     const Icon = icon;

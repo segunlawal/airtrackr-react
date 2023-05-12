@@ -7,7 +7,7 @@ const ErrorPage = () => {
         <div className="lg_background text-custom-black">
             <div className="flex pt-10 justify-center gap-1 text-[#c99c33]">
                 <BsFillAirplaneEnginesFill className="text-3xl " />
-                <p className="font-semibold text-3xl">OpenSKY</p>
+                <p className="font-semibold text-3xl">AirTrackr</p>
             </div>
             <div className="flex flex-col items-center pt-20 min-h-screen w-[99vw]">
                 <p>Page not found</p>

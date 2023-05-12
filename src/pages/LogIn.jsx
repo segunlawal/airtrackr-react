@@ -41,13 +41,16 @@ const LogIn = () => {
         const { loginEmail, loginPassword } = values;
         setIsButtonDisabled(true);
         if (loginEmail === "admin@gmail.com" && loginPassword === "admin") {
-            toast.success("Login successful");
-            localStorage.setItem("openSkyToken", loginEmail);
-            navigate("/dashboard");
+            setTimeout(() => {
+                localStorage.setItem("openSkyToken", loginEmail);
+                toast.success("Login successful");
+                navigate("/dashboard");
+                setIsButtonDisabled(false);
+            }, 1000);
         } else {
             toast.error("Invalid username or password");
+            setIsButtonDisabled(false);
         }
-        setIsButtonDisabled(false);
     };
 
     return (
@@ -55,7 +58,7 @@ const LogIn = () => {
             <ToastContainer />
             <div className="flex justify-center gap-1 text-[#c99c33]">
                 <BsFillAirplaneEnginesFill className="text-3xl mt-auto" />
-                <p className="font-semibold text-3xl">OpenSKY</p>
+                <p className="font-semibold text-3xl">AirTrackr</p>
             </div>
             <p className="text-3xl mx-auto font-semibold tracking-tight py-7">
                 Welcome back!
