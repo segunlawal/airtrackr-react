@@ -138,6 +138,9 @@ const LogIn = () => {
                     </Form>
                 )}
             </Formik>
+            <small className="fixed bottom-5 left-1/2 -translate-x-2/4 text-custom-blue">
+                TEST: Email: admin@gmal.com || password: admin
+            </small>
             <a href="https://opensky-network.org/" target="__blank">
                 <small className="fixed bottom-1 left-1/2 -translate-x-2/4 text-custom-blue">
                     Learn more about OpenSky
